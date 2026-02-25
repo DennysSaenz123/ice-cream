@@ -19,7 +19,9 @@ const PORT = 3000;
 // in-memory array
 const form_data = [];
 
- app.use(express.static('public'));
+// Adding for EJS
+
+app.use(express.urlencoded({ extended: true }));
  
 // Define a default "route" ('/')
 
@@ -31,17 +33,26 @@ app.get('/', (req, res) => {
   res.sendFile(`${import.meta.dirname}/views/index.html`);
 
 });
-app.post('/submit',(req,res) =>{
+
+app.get('/admin', (req, res) => {
+  res.send(form_data);
+});
+app.post('/submit',(req, res) =>{
   const submission = {
-    name: req.body.name,
-    email: req.body.email,
-    cone_type: req.body.cone_type,
+    name: req.body['order-name'],
+    email: req.body['order-email'],
+    cone_type: req.body['cone-option'],
     toppings: req.body.toppings ? req.body.toppings : "none",
-    comment: req.body.comment,
+    comment: req.body['comments'],
     timestamp: new Date()
   };
   form_data.push(submission)
-  console.log(form_data);
+  res.sendFile(`${import.meta.dirname}/views/confirm.ejs`);
+});
+
+// Thank you route
+app.get('/thank-you', (req, res) => {
+    res.sendFile(`${import.meta.dirname}/views/confirm.ejs`);
 });
 
 
