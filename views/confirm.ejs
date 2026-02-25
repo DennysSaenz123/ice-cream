@@ -11,11 +11,11 @@
 
   <h2>Order Details</h2>
 
-  <p>Name: <%= submission.order-name %></p>
-  <p>Email: <%= submission.order-email %></p>
+  <p>Name: <%= submission.name %></p>
+  <p>Email: <%= submission.email %></p>
   <p>Flavor: <%= submission.flavor %></p>
-  <p>Cone: <%= submission.cone %></p>
-  <p>Toppings:  <%= Array.isArray(order.toppings) ?
+  <p>Cone: <%= submission.cone_type %></p>
+  <p>Toppings:  <%= Array.isArray(submission.toppings) ?
                 submission.toppings.join(', ') :
                 "No toppings" %></p>
 
