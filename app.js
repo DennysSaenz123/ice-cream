@@ -52,7 +52,7 @@ app.post('/submit',(req, res) =>{
   };
 
   form_data.push(submission)
-  res.render('confirm');
+  res.render('confirm', { submission });
 
 });
 
