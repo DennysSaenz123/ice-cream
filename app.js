@@ -35,7 +35,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  res.send(form_data);
 });
 app.post('/submit',(req, res) =>{
   const submission = {
@@ -47,12 +46,13 @@ app.post('/submit',(req, res) =>{
     timestamp: new Date()
   };
   form_data.push(submission)
-  res.sendFile(`${import.meta.dirname}/views/confirm.ejs`);
+  res.render('confirm');
+
 });
 
 // Thank you route
 app.get('/thank-you', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/confirm.ejs`);
+    res.render('confirm');
 });
 
 
