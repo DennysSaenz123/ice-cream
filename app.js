@@ -35,7 +35,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  res.send(form_data);
 });
 
 
@@ -50,8 +49,8 @@ app.post('/submit',(req, res) =>{
   };
 
   form_data.push(submission)
+  res.render('confirm');
 
-  res.render(`confirm`);
 });
 
 // Thank you route
