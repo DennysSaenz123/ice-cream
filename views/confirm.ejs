@@ -7,9 +7,17 @@
 </head>
 <body>
 
-  <h1>Order confirmed.</h1>
+  <h1>Order confirmed, <%= submission.fname %></h1>
 
-  <p>Details: </p>
+  <h2>Order Details</h2>
+
+  <p>Name: <%= submission.order-name %></p>
+  <p>Email: <%= submission.order-email %></p>
+  <p>Flavor: <%= submission.flavor %></p>
+  <p>Cone: <%= submission.cone %></p>
+  <p>Toppings:  <%= Array.isArray(order.toppings) ?
+                submission.toppings.join(', ') :
+                "No toppings" %></p>
 
   <a href="/">Return?</a>
   
