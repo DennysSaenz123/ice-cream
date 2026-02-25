@@ -7,6 +7,10 @@ import express from 'express';
 
 const app = express();
 
+// Set view engine to EJS
+
+app.set('view engine', 'ejs');
+
 
 // Define the port number where our server will listen
 
