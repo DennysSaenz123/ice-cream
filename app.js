@@ -17,8 +17,12 @@ app.set('view engine', 'ejs');
 const PORT = 3000;
 
 
+app.use(express.static('public'));
 
- app.use(express.static('public'));
+
+// Adding for EJS
+
+app.use(express.urlencoded({ extended: true }));
  
 // Define a default "route" ('/')
 
