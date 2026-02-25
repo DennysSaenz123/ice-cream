@@ -33,11 +33,12 @@ app.use(express.urlencoded({ extended: true }));
 // res: allows us to send back a response to the client
 app.get('/', (req, res) => {
 
-  res.sendFile(`${import.meta.dirname}/views/index.html`);
+  res.render('index');
 
 });
 
 app.get('/admin', (req, res) => {
+  res.render('admin', { form_data }); // renders admin page with form_data JSON objects
 });
 
 
