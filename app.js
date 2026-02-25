@@ -7,6 +7,9 @@ import express from 'express';
 
 const app = express();
 
+// Serve files from public
+app.use(express.static('public'));
+
 // Set view engine to EJS
 
 app.set('view engine', 'ejs');
