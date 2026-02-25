@@ -16,9 +16,9 @@ app.set('view engine', 'ejs');
 
 const PORT = 3000;
 
+// Adding for express -- helps serve static files
 
 app.use(express.static('public'));
-
 
 // Adding for EJS
 
@@ -33,6 +33,11 @@ app.get('/', (req, res) => {
 
   res.sendFile(`${import.meta.dirname}/views/home.html`);
 
+});
+
+// Thank you route
+app.get('/thank-you', (req, res) => {
+    res.sendFile(`${import.meta.dirname}/views/confirm.ejs`);
 });
 
 
