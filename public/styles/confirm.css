@@ -1,10 +1,22 @@
 * {
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;
 }
 
+html {
+  min-height: 100vh;
+  overflow: auto;
+}
+
+
 body {
   background: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
-  height: 100vh;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
@@ -13,23 +25,37 @@ main {
   margin: auto;
   margin-top: 4rem;
   padding-top: 1.5rem;
+  padding-bottom: 2rem; 
   border-radius: 15px;
 }
 
 h1, #subtitle {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 h2 {
   font-size: 1rem;
   color: green;
   text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 1rem;
+  display: inline;
+  padding: 0.3rem;
+  margin-bottom: 0.3rem;
+  display: inline-block;
 }
 
 img {
   display: block;
   width: 5rem;
   margin: auto;
+  margin-bottom: 1rem;
 }
 
 #inner {
@@ -37,9 +63,12 @@ img {
 }
 
 .topping {
-  background-color: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
+background: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
   color: white;
-  border-radius: 10px;
+  border-radius: 25px;
+  display: inline;
+  padding: 0.3rem;
+  font-size: 0.9rem;
 }
 
 #comment {
@@ -53,6 +82,19 @@ img {
 #buttons-div {
   margin: auto;
   width: fit-content;
+}
+
+button {
+  padding: 0.7rem 2rem;
+  border: none;
+  border-radius: 10px;
+}
+
+#print {
+  font-weight: bold;
+  border: 2px solid blue;
+  background-color: white;
+  color: blue;
 }
 
 

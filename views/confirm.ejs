@@ -25,22 +25,22 @@
       <h2>Order Details</h2>
       <h3>Flavor:</h3> <p><%# submission.flavor %></p>
       <h3>Cone:</h3> <p><%# submission.cone_type %></p>
-      <h3>Toppings:</h3>  <div class="topping">Testing<%# Array.isArray(submission.toppings) ?
-                    submission.toppings.join('</p class="topping"> <p>') :
-                    "None" %></div></p>
+      <h3>Toppings:</h3>  <p class="topping">Testing<%# Array.isArray(submission.toppings) ?
+                    submission.toppings.join('</p> class="topping"> <p>') :
+                    "None" %></p>
 
       <h2>Additional Comments</h2>
-      <p id="comment"> <%# submission.comment : "None" %></p>
+      <p id="comment"> <%# if (submission.comment) ? submission.comment : "None" %></p>
 
     </div>
     
     <div id = "buttons-div">
-      <button>Print Order</button>
-      <button onclick="location.href='/'">Place another order</button>
+      <button id="print">Print Order</button>
+      <button onclick="location.href='/'" id="another-order">Place another order</button>
     </div>
 
 
-    </main>
+  </main>
 
 </body>
 </html>
