@@ -3,32 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/confirm.css">
   <title>Thank You!</title>
+
 </head>
 <body>
 
-  <div>
-  <h1>Thank you for your order!</h1>
-  <p>Your ice cream order has been confirmed.</p>
+  <main>
+    <h1>Thank you for your order!</h1>
+    <p>Your ice cream order has been confirmed.</p>
 
-  <h2>Personal Information</h2>
+    <h2>Personal Information</h2>
 
-  <p>Name: <%= submission.name %></p>
-  <p>Email: <%= submission.email %></p>
+    <p>Name: <%# submission.name %></p>
+    <p>Email: <%# submission.email %></p>
 
-  <h2>Order Details</h2>
-  <p>Flavor: <%= submission.flavor %></p>
-  <p>Cone: <%= submission.cone_type %></p>
-  <p>Toppings:  <%= Array.isArray(submission.toppings) ?
-                submission.toppings.join(', ') :
-                "No toppings" %></p>
+    <h2>Order Details</h2>
+    <p>Flavor: <%# submission.flavor %></p>
+    <p>Cone: <%# submission.cone_type %></p>
+    <p>Toppings:  <%# Array.isArray(submission.toppings) ?
+                  submission.toppings.join(', ') :
+                  "No toppings" %></p>
 
-  <h2>Additional Comments</h2>
+    <h2>Additional Comments</h2>
 
-  <button>Print Order</button>
-  <button>Place another order</button>
+    <button>Print Order</button>
+    <button onclick="location.href='/'">Place another order</button>
+    </main>
 
-  <a href="/">Return?</a>
-  </div>
 </body>
 </html>
