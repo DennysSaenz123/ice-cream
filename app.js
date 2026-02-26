@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 // Define the port number where our server will listen
 
-const PORT = 3000;
+const PORT = 3007;
 
 // in-memory array
 const form_data = [];
@@ -33,11 +33,12 @@ app.use(express.urlencoded({ extended: true }));
 // res: allows us to send back a response to the client
 app.get('/', (req, res) => {
 
-  res.sendFile(`${import.meta.dirname}/views/index.html`);
+  res.render('index');
 
 });
 
 app.get('/admin', (req, res) => {
+  res.render('admin', { form_data }); // renders admin page with form_data JSON objects
 });
 
 
