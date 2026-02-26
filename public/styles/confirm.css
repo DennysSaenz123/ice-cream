@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+}
+
 body {
   background: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
   height: 100vh;
@@ -8,6 +12,7 @@ main {
   width: 45%;
   margin: auto;
   margin-top: 4rem;
+  padding-top: 1.5rem;
   border-radius: 15px;
 }
 
@@ -29,6 +34,20 @@ img {
 
 #inner {
   margin: 3rem;
+}
+
+.topping {
+  background-color: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
+  color: white;
+  border-radius: 10px;
+}
+
+#comment {
+  font-size: 0.9rem;
+  padding: 0.6rem;
+  border-radius: 5px;
+  box-shadow: -2px 0px blue;
+  font-style: italic;
 }
 
 #buttons-div {

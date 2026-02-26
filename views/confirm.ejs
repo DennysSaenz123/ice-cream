@@ -19,17 +19,18 @@
     <div id="inner">
       <h2>Personal Information</h2>
 
-      <p>Name: <%# submission.name %></p>
-      <p>Email: <%# submission.email %></p>
+      <h3>Name:</h3> <p><%# submission.name %></p>
+      <h3>Email:</h3> <p><%# submission.email %></p>
 
       <h2>Order Details</h2>
-      <p>Flavor: <%# submission.flavor %></p>
-      <p>Cone: <%# submission.cone_type %></p>
-      <p>Toppings:  <%# Array.isArray(submission.toppings) ?
-                    submission.toppings.join(', ') :
-                    "No toppings" %></p>
+      <h3>Flavor:</h3> <p><%# submission.flavor %></p>
+      <h3>Cone:</h3> <p><%# submission.cone_type %></p>
+      <h3>Toppings:</h3>  <div class="topping">Testing<%# Array.isArray(submission.toppings) ?
+                    submission.toppings.join('</p class="topping"> <p>') :
+                    "None" %></div></p>
 
       <h2>Additional Comments</h2>
+      <p id="comment"> <%# submission.comment : "None" %></p>
 
     </div>
     
