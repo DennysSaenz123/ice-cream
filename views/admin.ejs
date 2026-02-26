@@ -4,8 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Scripts -->
+    <script src="//code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="//cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+    <script src="//cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="//cdn.datatables.net/2.3.7/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css">
 </head>
 <body>
-    
+    <h1>Order Summary</h1>
+    <table id="order-table" class="display">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Toppings</th>
+                <th>Size</th>
+                <th>Method</th>
+                <th>Comment</th>                             
+            </tr>
+        </thead>
+        <tbody>
+    <% form_data.forEach(order => { %>
+        <tr>
+            <td><%= submission.fname %></td>
+            <td><%= submission.email %></td>
+            <td><%= submission.toppings %></td>
+            <td><%= submission.size %></td>
+            <td><%= submission.method %></td>
+            <td><%= submission.comment %></td>
+            <td><%= submission.timestamp.toLocaleString() %></td>
+        </tr>
+    <% }) %>
+        </tbody>    
+    </table>
+
+    <script>
+        new DataTable('#order-table', {
+            responsive: true
+        });
+    </script>
 </body>
 </html>
