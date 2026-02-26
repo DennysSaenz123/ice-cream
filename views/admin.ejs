@@ -23,18 +23,19 @@
                 <th>Email</th>
                 <th>Toppings</th>
                 <th>Cone Type</th>
+                <th>Cone Type</th>
                 <th>Comment</th>                             
             </tr>
         </thead>
         <tbody>
     <% form_data.forEach(submission => { %>
         <tr>
-            <td><%= submission.fname %></td>
+            <td><%= submission.timestamp.toLocaleString() %></td>
+            <td><%= submission.name %></td>
             <td><%= submission.email %></td>
             <td><%= submission.toppings %></td>
             <td><%= submission.cone_type%></td>
             <td><%= submission.comment %></td>
-            <td><%= submission.timestamp.toLocaleString() %></td>
         </tr>
     <% }) %>
         </tbody>    
