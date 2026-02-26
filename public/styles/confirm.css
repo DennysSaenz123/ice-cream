@@ -117,6 +117,11 @@ button {
   color: white;
 }
 
+footer {
+  text-align: center;
+  padding: 0.5rem;
+}
+
 @media screen and (max-width: 1142px) {
   main {
     width: 60%;
