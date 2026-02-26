@@ -21,11 +21,11 @@ body {
 
 main {
   background-color: white;
-  width: 45%;
+  width: 35%;
   margin: auto;
   margin-top: 4rem;
+  padding: 1rem;
   padding-top: 1.5rem;
-  padding-bottom: 2rem; 
   border-radius: 15px;
 }
 
@@ -47,7 +47,7 @@ h3 {
   font-size: 1rem;
   display: inline;
   padding: 0.3rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   display: inline-block;
 }
 
@@ -62,9 +62,18 @@ img {
   margin: 3rem;
 }
 
+#inner p {
+  display: inline-block;
+}
+
+#inner p::first-letter {
+  text-transform: uppercase;
+}
+
 .topping {
-background: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
+  background: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
   color: white;
+  text-transform: capitalize;
   border-radius: 25px;
   display: inline;
   padding: 0.3rem;
@@ -81,21 +90,51 @@ background: linear-gradient(-120deg, #021B79, #0575E6, #205E9B);
 
 #buttons-div {
   margin: auto;
-  width: fit-content;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 button {
-  padding: 0.7rem 2rem;
+  padding: 0.7rem 0rem;
+  font-weight: bold;
   border: none;
   border-radius: 10px;
+  width: 250px;
 }
 
 #print {
-  font-weight: bold;
   border: 2px solid blue;
   background-color: white;
   color: blue;
 }
 
+#another-order {
+  border: 2px solid green;
+  background-color: green;
+  color: white;
+}
 
+@media screen and (max-width: 1142px) {
+  main {
+    width: 60%;
+  }
+}
+
+
+@media screen and (max-width: 650px) {
+  #buttons-div {
+    flex-direction: column;
+  }
+
+  #inner {
+    margin: 1.5rem;
+  }
+
+  main {
+    width: 75%;
+  }
+}
 

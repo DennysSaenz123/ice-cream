@@ -46,6 +46,7 @@ app.post('/submit',(req, res) =>{
   const submission = {
     name: req.body['order-name'],
     email: req.body['order-email'],
+    flavor: req.body['flavor'],
     cone_type: req.body['cone-option'],
     toppings: req.body.toppings ? req.body.toppings : "none",
     comment: req.body['comments'],
