@@ -11,25 +11,34 @@
 <body>
 
   <main>
+    
+    <img src = "/images/green-checkmark.jpg">
     <h1>Thank you for your order!</h1>
-    <p>Your ice cream order has been confirmed.</p>
+    <p id="subtitle">Your ice cream order has been confirmed.</p>
 
-    <h2>Personal Information</h2>
+    <div id="inner">
+      <h2>Personal Information</h2>
 
-    <p>Name: <%# submission.name %></p>
-    <p>Email: <%# submission.email %></p>
+      <p>Name: <%# submission.name %></p>
+      <p>Email: <%# submission.email %></p>
 
-    <h2>Order Details</h2>
-    <p>Flavor: <%# submission.flavor %></p>
-    <p>Cone: <%# submission.cone_type %></p>
-    <p>Toppings:  <%# Array.isArray(submission.toppings) ?
-                  submission.toppings.join(', ') :
-                  "No toppings" %></p>
+      <h2>Order Details</h2>
+      <p>Flavor: <%# submission.flavor %></p>
+      <p>Cone: <%# submission.cone_type %></p>
+      <p>Toppings:  <%# Array.isArray(submission.toppings) ?
+                    submission.toppings.join(', ') :
+                    "No toppings" %></p>
 
-    <h2>Additional Comments</h2>
+      <h2>Additional Comments</h2>
 
-    <button>Print Order</button>
-    <button onclick="location.href='/'">Place another order</button>
+    </div>
+    
+    <div id = "buttons-div">
+      <button>Print Order</button>
+      <button onclick="location.href='/'">Place another order</button>
+    </div>
+
+
     </main>
 
 </body>
