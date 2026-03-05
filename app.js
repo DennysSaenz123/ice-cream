@@ -2,7 +2,7 @@
 
 import express from 'express';
 
-import mysql12 from 'mysql12';
+import mysql12 from 'mysql2';
 
 import dotenv from 'dotenv';
 
