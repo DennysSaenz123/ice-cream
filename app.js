@@ -27,8 +27,6 @@ app.set('view engine', 'ejs');
 
 const PORT = 3007;
 
-// in-memory array
-const form_data = [];
 
 // Adding for EJS
 
@@ -45,8 +43,15 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/admin', (req, res) => {
-  res.render('admin', { form_data }); // renders admin page with form_data JSON objects
+app.get('/admin', async (req, res) => {
+  try {
+    const [orders] = await pool.query('SELECT * FROM orders');
+    // render admin page
+    res.render('admin', { form_data: orders });
+  } catch (err) {
+    console.error('Database error:', err);
+    res.status(500).send('Database error: ' + err.message);
+  }
 });
 
 const pool = mysql2.createPool({
@@ -68,19 +73,41 @@ app.get('/db-test', async(req,res) => {
 })
 
 
-app.post('/submit',(req, res) =>{
-  const submission = {
-    name: req.body['order-name'],
-    email: req.body['order-email'],
-    flavor: req.body['flavor'],
-    cone_type: req.body['cone-option'],
-    toppings: req.body.toppings ? req.body.toppings : "none",
-    comment: req.body['comments'],
-    timestamp: new Date()
-  };
+app.post('/submit', async (req, res) => {
 
-  form_data.push(submission)
-  res.render('confirm', { submission });
+  try {
+    //get form data from the req body
+    const order = req.body;
+    // log order data (for debugging)
+    console.log('Received order:', order);
+
+    // convert toppings array to comma-separated string
+    order.toppings = Array.isArray(order.toppings) ? 
+    order.toppings.join(',') : "";
+
+    //sql insert
+    const sql = `INSERT INTO orders(customer, email, flavor, cone, toppings) VALUES (?, ?, ?, ?, ?);`;
+
+    // params array to match order structure query
+    const params = [
+      order['order-name'],
+      order['order-email'],
+      order.flavor,
+      order['cone-option'],
+      order.toppings
+    ];
+    console.log(params);
+    const result = await pool.execute(sql, params);
+    console.log('Order saved with ID:', result[0].insertId)
+// render data
+res.render('confirm', { order });
+
+  }catch (err){
+      console.log('Error saving order:', err);
+      res.status(500).send('Error saving order: Please try again.');
+    }
+  
+
 
 });
 
