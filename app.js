@@ -2,7 +2,7 @@
 
 import express from 'express';
 
-import mysql12 from 'mysql2';
+import mysql2 from 'mysql2';
 
 import dotenv from 'dotenv';
 
@@ -49,11 +49,11 @@ app.get('/admin', (req, res) => {
   res.render('admin', { form_data }); // renders admin page with form_data JSON objects
 });
 
-const pool = mysql12.createPool({
+const pool = mysql2.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  databse: process.env.DB_DATABASE,
+  database: process.env.DB_NAME,
   port: process.env.DB_PORT,
 }).promise();
 
