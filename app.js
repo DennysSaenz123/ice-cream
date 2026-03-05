@@ -2,6 +2,14 @@
 
 import express from 'express';
 
+import mysql12 from 'mysql12';
+
+import dotenv from 'dotenv';
+
+//load the enviroment variables from .env file
+
+dotenv.config();
+
 
 // Create an instance of an Express application
 
@@ -40,6 +48,24 @@ app.get('/', (req, res) => {
 app.get('/admin', (req, res) => {
   res.render('admin', { form_data }); // renders admin page with form_data JSON objects
 });
+
+const pool = mysql12.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  databse: process.env.DB_DATABASE,
+  port: process.env.DB_PORT,
+}).promise();
+
+app.get('/db-test', async(req,res) => {
+  try {
+    const orders = await pool.query('SELECT * FROM orders');
+    res.send(orders[0]); 
+  } catch (err){
+    console.error('Database error:', err);
+    res.status(500).send('Database error: ' + err.message);
+  }
+})
 
 
 app.post('/submit',(req, res) =>{
