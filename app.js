@@ -79,7 +79,15 @@ app.post('/submit', async (req, res) => {
 
   try {
     //get form data from the req body
-    const order = req.body;
+   const order = {
+  name: req.body['order-name'],
+  email: req.body['order-email'],
+  flavor: req.body.flavor,
+  cone: req.body['cone-option'],
+  toppings: Array.isArray(req.body.toppings)
+    ? req.body.toppings
+    : []
+};
     // log order data (for debugging)
     console.log('Received order:', order);
 
@@ -89,9 +97,9 @@ app.post('/submit', async (req, res) => {
 
     //sql insert
     const sql = `INSERT INTO orders(customer, email, flavor, cone, toppings) VALUES (?, ?, ?, ?, ?);`;
-    const name = order['order-name'];
-    const email = order['order-email'];
-    const cone_option = order['cone-option'];
+    const name = order.name;
+    const email = order.email;
+    const cone_option = order.cone;
 
     // params array to match order structure query
     const params = [
@@ -101,10 +109,10 @@ app.post('/submit', async (req, res) => {
       cone_option,
       order.toppings
     ];
-    console.log(params);
     const result = await pool.execute(sql, params);
     console.log('Order saved with ID:', result[0].insertId)
 // render data
+form_data.push(order);
 res.render('confirm', { order });
 
   }catch (err){
@@ -118,8 +126,8 @@ res.render('confirm', { order });
 
 // Thank you route
 app.get('/thank-you', (req, res) => {
-    res.render('confirm', { params });
-});
+    res.render('confirm', { order : form_data[form_data.length - 1] });
+     });
 
 
 // Start the server and listen on the specified port
