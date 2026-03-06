@@ -8,8 +8,10 @@ import dotenv from 'dotenv';
 
 //load the enviroment variables from .env file
 
-dotenv.config();
+// const form_data
+const form_data = [];
 
+dotenv.config();
 
 // Create an instance of an Express application
 
@@ -87,13 +89,16 @@ app.post('/submit', async (req, res) => {
 
     //sql insert
     const sql = `INSERT INTO orders(customer, email, flavor, cone, toppings) VALUES (?, ?, ?, ?, ?);`;
+    const name = order['order-name'];
+    const email = order['order-email'];
+    const cone_option = order['cone-option'];
 
     // params array to match order structure query
     const params = [
-      order['order-name'],
-      order['order-email'],
+      name,
+      email,
       order.flavor,
-      order['cone-option'],
+      cone_option,
       order.toppings
     ];
     console.log(params);
@@ -113,7 +118,7 @@ res.render('confirm', { order });
 
 // Thank you route
 app.get('/thank-you', (req, res) => {
-    res.render('confirm');
+    res.render('confirm', { params });
 });
 
 

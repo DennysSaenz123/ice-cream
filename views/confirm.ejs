@@ -13,36 +13,34 @@
   <main>
     
     <img src = "/images/green-checkmark.jpg">
-    <h1>Thank you for your order!</h1>
+    <h1>Thank you for your order, <%= %></h1>
     <p id="subtitle">Your ice cream order has been confirmed.</p>
-
+    <%= console.log(params[0]) %>
+<!---
     <div id="inner">
       <h2>Personal Information</h2>
 
-      <h3>Name:</h3> <p><%= submission.name %></p>
+      <h3>Name:</h3> <p><%= params[0]%></p>
       <br>
-      <h3>Email:</h3> <p><%= submission.email %></p>
+      <h3>Email:</h3> <p><%= params[1] %></p>
       <br>
 
       <h2>Order Details</h2>
-      <h3>Flavor:</h3> <p><%= submission.flavor %></p>
+      <h3>Flavor:</h3> <p><%= params[2] %></p>
       <br>
-      <h3>Cone:</h3> <p><%= submission.cone_type %></p>
+      <h3>Cone:</h3> <p><%= params[3] %></p>
       <br>
       <h3>Toppings:</h3>
-      <% if (Array.isArray(submission.toppings) && submission.toppings.length > 0) { %>
-      <% submission.toppings.forEach(topping => { %>
+      <% if (Array.isArray(order.toppings) && params[4].length > 0) { %>
+      <% params[4].forEach(topping => { %>
         <p class="topping"><%= topping %></p>
       <% }); %>
       <% } else { %>
         <p class = "topping">None</p>
       <% } %>
-    
-      <h2>Additional Comments</h2>
-      <article id="comment"> <%= (submission.comment) ? submission.comment : "None" %></article>
 
     </div>
-    
+    !-->
     <div id = "buttons-div">
       <button id="print" onclick="window.print()">Print Order</button>
       <button onclick="location.href='/'" id="another-order">Place Another Order</button>
